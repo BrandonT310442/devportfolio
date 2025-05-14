@@ -1,3 +1,7 @@
+window.onbeforeunload = function() {
+    window.scrollTo(0, 0);
+};
+
 // Custom cursor effect
 const cursor = document.createElement('div');
 const cursorFollower = document.createElement('div');
@@ -74,36 +78,7 @@ const revealElementsOnScroll = () => {
 window.addEventListener('scroll', revealElementsOnScroll);
 window.addEventListener('load', revealElementsOnScroll);
 
-// Typing animation for hero section
-const typeWriter = (element, text, speed = 100, delay = 0) => {
-    let i = 0;
-    setTimeout(() => {
-        const typing = setInterval(() => {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typing);
-            }
-        }, speed);
-    }, delay);
-};
 
-document.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-content h1');
-    const heroSubtitle = document.querySelector('.hero-content h2');
-    
-    if (heroTitle && heroSubtitle) {
-        const titleText = heroTitle.textContent;
-        const subtitleText = heroSubtitle.textContent;
-        
-        heroTitle.textContent = '';
-        heroSubtitle.textContent = '';
-        
-        typeWriter(heroTitle, titleText, 100);
-        typeWriter(heroSubtitle, subtitleText, 80, titleText.length * 100 + 500);
-    }
-});
 
 // Project filter functionality
 const filterProjects = (category) => {
@@ -345,4 +320,132 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+});
+
+// Experience timeline interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const experienceContents = document.querySelectorAll('.experience-content');
+    
+    timelineItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Remove active class from all items
+            timelineItems.forEach(i => i.classList.remove('active'));
+            experienceContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked item
+            item.classList.add('active');
+            
+            // Show corresponding content
+            const company = item.getAttribute('data-company');
+            document.querySelector(`.experience-content[data-company="${company}"]`).classList.add('active');
+        });
+    });
+});
+
+// Remove the typing animation code
+// This section is already commented out in your code
+
+// Keep this DOMContentLoaded event handler for hero content
+document.addEventListener('DOMContentLoaded', function() {
+    // Force scroll to top on page load
+    window.scrollTo(0, 0);
+    
+    // Immediately reveal hero section without waiting for scroll
+    const heroContent = document.querySelector('.hero-content');
+    const heroImage = document.querySelector('.hero-image');
+    const btLogo = document.querySelector('.bt-logo-large');
+    const btLetters = document.querySelectorAll('.bt-letter');
+    
+    if (heroContent) {
+        heroContent.classList.add('revealed');
+        // Also reveal all child elements immediately
+        heroContent.querySelectorAll('*').forEach(element => {
+            element.classList.add('revealed');
+        });
+    }
+    
+    if (heroImage) {
+        heroImage.classList.add('revealed');
+    }
+    
+    if (btLogo) {
+        btLogo.classList.add('revealed');
+    }
+    
+    if (btLetters) {
+        btLetters.forEach(letter => {
+            letter.classList.add('revealed');
+        });
+    }
+    
+    // Handle other reveal animations on scroll as usual
+    const revealElements = document.querySelectorAll('.reveal-on-scroll:not(.hero-content):not(.hero-image)');
+    
+    const revealOnScroll = function() {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight * 0.85) {
+                element.classList.add('revealed');
+            }
+        });
+    };
+    
+    // Initial check on page load
+    revealOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', revealOnScroll);
+});
+
+
+
+// Hamburger menu functionality
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const overlay = document.querySelector('.overlay');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+    
+    // Toggle overlay
+    if (nav.classList.contains('active')) {
+        overlay.style.display = 'block';
+        setTimeout(() => {
+            overlay.style.opacity = '1';
+        }, 10);
+    } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
+});
+
+// Close menu when clicking outside
+overlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    nav.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 300);
+});
+
+// Close menu when clicking on a nav link
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    });
 });

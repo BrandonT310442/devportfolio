@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Developer Portfolio</title>
+    <title>Brandon Tai - Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -35,23 +35,30 @@
                     <ul>
                         <li><a href="#home" class="active">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </header>
+    <div class="overlay"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content reveal-on-scroll">
                 <h3>Hello, I'm</h3>
-                <h1>Your Name</h1>
+                <h1>Brandon Tai</h1>
                 <h2>Full Stack Developer</h2>
-                <p>I build exceptional digital experiences that live at the intersection of design and technology.</p>
+                <p>I'm currently studying Computer Science at the University of Toronto and I have a passion of building innovative apps that help solve problems that exist in society today. </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Contact Me</a>
                     <a href="#projects" class="btn btn-secondary">View My Work</a>
@@ -65,11 +72,7 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <a href="#about">
-                <span>Scroll Down</span>
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
+     
     </section>
 
     <!-- About Section -->
@@ -100,6 +103,85 @@
                     <div class="stat-item">
                         <span class="stat-number">15+</span>
                         <span class="stat-text">Happy Clients</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header reveal-on-scroll">
+                <h2>Where I've Worked</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline-container reveal-on-scroll">
+                <div class="timeline-nav">
+                    <div class="timeline-item active" data-company="upstatement">
+                        <span class="company-name">Upstatement</span>
+                    </div>
+                    <div class="timeline-item" data-company="apple">
+                        <span class="company-name">Apple</span>
+                    </div>
+                    <div class="timeline-item" data-company="scout">
+                        <span class="company-name">Scout Studio</span>
+                    </div>
+                    <div class="timeline-item" data-company="starry">
+                        <span class="company-name">Starry</span>
+                    </div>
+                    <div class="timeline-item" data-company="mullen">
+                        <span class="company-name">MullenLowe</span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <div class="experience-content active" data-company="upstatement">
+                        <h3>Lead Engineer <span class="company-highlight">@ Upstatement</span></h3>
+                        <p class="experience-date">May 2018 - Present</p>
+                        <ul class="experience-details">
+                            <li>Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more</li>
+                            <li>Work alongside creative directors to lead the research, development, and architecture of technical solutions to fulfill business requirements</li>
+                            <li>Collaborate with designers, project managers, and other engineers to transform creative concepts into production realities for clients and stakeholders</li>
+                            <li>Provide leadership within engineering department through close collaboration, knowledge shares, and mentorship</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" data-company="apple">
+                        <h3>UI Engineer <span class="company-highlight">@ Apple</span></h3>
+                        <p class="experience-date">July 2017 - April 2018</p>
+                        <ul class="experience-details">
+                            <li>Developed and maintained features for Apple Music web application using Ember.js</li>
+                            <li>Collaborated with design and product teams to implement responsive UI components</li>
+                            <li>Optimized application performance and improved cross-browser compatibility</li>
+                            <li>Participated in code reviews and contributed to internal UI component libraries</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" data-company="scout">
+                        <h3>Developer <span class="company-highlight">@ Scout Studio</span></h3>
+                        <p class="experience-date">January 2017 - June 2017</p>
+                        <ul class="experience-details">
+                            <li>Worked with a team of student designers and developers to create digital solutions for real-world clients</li>
+                            <li>Built and shipped the company's first responsive website using modern web technologies</li>
+                            <li>Implemented custom CMS features to allow easy content updates by non-technical users</li>
+                            <li>Maintained and improved existing client websites and applications</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" data-company="starry">
+                        <h3>Software Engineer <span class="company-highlight">@ Starry</span></h3>
+                        <p class="experience-date">July 2016 - December 2016</p>
+                        <ul class="experience-details">
+                            <li>Engineered and maintained major features of Starry's customer-facing web application using ES6, Handlebars, Backbone, Marionette and CSS</li>
+                            <li>Proposed and implemented scalable solutions to issues identified with cloud services and applications</li>
+                            <li>Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" data-company="mullen">
+                        <h3>Creative Technologist <span class="company-highlight">@ MullenLowe</span></h3>
+                        <p class="experience-date">July 2015 - June 2016</p>
+                        <ul class="experience-details">
+                            <li>Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and jQuery</li>
+                            <li>Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness</li>
+                            <li>Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more</li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -55,8 +55,8 @@ img {
 
 /* Custom Cursor */
 .cursor {
-    display: none; /* Hide the cursor circle */
     position: fixed;
+
     width: 10px;
     height: 10px;
     background-color: var(--primary-color);
@@ -68,7 +68,6 @@ img {
 }
 
 .cursor-follower {
-    display: none; /* Hide the cursor follower */
     position: fixed;
     width: 30px;
     height: 30px;
@@ -136,7 +135,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0.3rem 0; /* Further reduced padding */
     z-index: 100;
     transition: var(--transition);
     backdrop-filter: blur(10px);
@@ -145,7 +144,7 @@ header {
 }
 
 header.scrolled {
-    padding: 0.7rem 0;
+    padding: 0.3rem 0; /* Reduced padding */
     background-color: rgba(10, 25, 47, 0.95);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
@@ -257,11 +256,13 @@ nav a.active {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    height: 100vh; /* Changed from min-height to exact height */
     display: flex;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 0; /* Remove top padding */
     position: relative;
+    margin-top: 70px; /* Ensure no margin */
+    padding-bottom: 0; /* Ensure no bottom padding */
 }
 
 .hero .container {
@@ -328,6 +329,14 @@ nav a.active {
     line-height: 0.8;
     transform: rotate(-5deg);
     perspective: 1500px;  /* Increased perspective for deeper 3D effect */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.bt-logo-large.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Add hover effects for more interactivity */
@@ -340,7 +349,10 @@ nav a.active {
     display: inline-block;
     transform-style: preserve-3d;
     animation: float 6s ease-in-out infinite;
-    transition: transform 0.5s ease, text-shadow 0.5s ease;  /* Add transition for text-shadow */
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.8s ease;  /* Smoother transition with cubic-bezier */
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .bt-b {
@@ -352,6 +364,12 @@ nav a.active {
         15px 15px 20px rgba(0, 0, 0, 0.5);
     animation-delay: 0s;
     transform: translateZ(40px) rotateY(-15deg);  /* Doubled Z-translation and increased rotation */
+}
+
+.bt-b.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
 }
 
 .bt-t {
@@ -366,13 +384,19 @@ nav a.active {
     transform: translateZ(40px) rotateY(15deg);  /* Doubled Z-translation and increased rotation */
 }
 
+.bt-t.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
 .bt-logo-large .bt-letter:hover {
-    transform: translateZ(60px) scale(1.08);  /* More dramatic hover effect */
+    transform: translateZ(50px) scale(1.05);  /* Less dramatic scale for smoother effect */
     text-shadow: 
         0 0 30px rgba(var(--primary-color-rgb), 0.8),
-        8px 8px 0 rgba(var(--primary-color-rgb), 0.5),
-        16px 16px 0 rgba(var(--primary-color-rgb), 0.3),
-        24px 24px 30px rgba(0, 0, 0, 0.6);
+        5px 5px 0 rgba(var(--primary-color-rgb), 0.5),
+        10px 10px 0 rgba(var(--primary-color-rgb), 0.3),
+        15px 15px 20px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes float {
@@ -380,13 +404,13 @@ nav a.active {
         transform: translateY(0) rotateX(0) rotateY(0);
     }
     25% {
-        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        transform: translateY(-8px) rotateX(3deg) rotateY(3deg);
     }
     50% {
         transform: translateY(0) rotateX(0) rotateY(0);
     }
     75% {
-        transform: translateY(10px) rotateX(-5deg) rotateY(-5deg);
+        transform: translateY(8px) rotateX(-3deg) rotateY(-3deg);
     }
 }
 
@@ -410,6 +434,7 @@ nav a.active {
 .scroll-indicator span {
     font-size: 0.9rem;
     letter-spacing: 1px;
+    
 }
 
 .scroll-indicator i {
@@ -700,6 +725,119 @@ section {
     border-radius: 4px;
     width: 0;
     transition: width 1.5s ease-in-out;
+}
+
+/* Experience Section */
+.experience {
+    padding: 8rem 0;
+}
+
+.timeline-container {
+    display: flex;
+    margin-top: 3rem;
+    gap: 2rem;
+}
+
+.timeline-nav {
+    min-width: 200px;
+    border-left: 2px solid rgba(100, 255, 218, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-item {
+    padding: 1rem 1.5rem;
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color-light);
+    transition: var(--transition);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: transparent;
+    transition: var(--transition);
+}
+
+.timeline-item.active {
+    color: var(--primary-color);
+}
+
+.timeline-item.active::before {
+    background-color: var(--primary-color);
+}
+
+.timeline-item:hover {
+    color: var(--primary-color);
+    background-color: rgba(100, 255, 218, 0.05);
+}
+
+.company-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.experience-content {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.experience-content.active {
+    display: block;
+}
+
+.experience-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.company-highlight {
+    color: var(--primary-color);
+}
+
+.experience-date {
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.experience-details {
+    list-style: none;
+}
+
+.experience-details li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.experience-details li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Projects Section */
@@ -1064,14 +1202,33 @@ footer {
 /* Reveal Animation */
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(15px); /* Reduced distance for subtler effect */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Faster transition */
 }
 
 .reveal-on-scroll.revealed {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Add a staggered reveal effect for child elements */
+.hero-content > * {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-content > *.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adjust animation timing for different elements */
+.hero-content h3.revealed { transition-delay: 0.1s; }
+.hero-content h1.revealed { transition-delay: 0.2s; }
+.hero-content h2.revealed { transition-delay: 0.3s; }
+.hero-content p.revealed { transition-delay: 0.4s; }
+.hero-content .hero-buttons.revealed { transition-delay: 0.5s; }
 
 /* Parallax Elements */
 .parallax {
@@ -1140,10 +1297,106 @@ body.light-mode .theme-toggle i::before {
         gap: 1.5rem;
     }
 }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px; /* Increased height for better visibility */
+    cursor: pointer;
+    z-index: 110;
+    padding: 0; /* Remove any padding */
+    margin-left: 20px; /* Add some spacing from the nav */
+    position: relative; /* Ensure proper positioning */
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    position: absolute; /* Position the spans absolutely */
+}
+
+/* Position the spans */
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 90;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
 
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-container {
+        position: relative;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--bg-color-light);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 6rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 100;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
     nav ul {
-        gap: 1rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
     }
     
     nav a {
@@ -1156,6 +1409,67 @@ body.light-mode .theme-toggle i::before {
     
     .about-stats {
         grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .timeline-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .timeline-nav {
+        min-width: 100%;
+        border-left: none;
+        border-bottom: 2px solid rgba(100, 255, 218, 0.1);
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .timeline-nav::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    .timeline-item {
+        padding: 0.8rem 1.2rem;
+        white-space: nowrap;
+    }
+    
+    .timeline-item::before {
+        left: 0;
+        top: auto;
+        bottom: -2px;
+        height: 2px;
+        width: 100%;
+    }
+    
+    .experience-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .experience-details li {
+        padding-left: 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience {
+        padding: 5rem 0;
+    }
+    
+    .timeline-item {
+        padding: 0.6rem 1rem;
+    }
+    
+    .experience-content h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+    
+    .experience-date {
+        margin-bottom: 1rem;
     }
 }
 
