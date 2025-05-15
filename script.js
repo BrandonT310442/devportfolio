@@ -346,6 +346,61 @@ document.addEventListener('DOMContentLoaded', function() {
 // Remove the typing animation code
 // This section is already commented out in your code
 
+// Show More button for Other Projects
+document.addEventListener('DOMContentLoaded', function() {
+    const showMoreBtn = document.querySelector('.show-more .btn');
+    const projectCards = document.querySelectorAll('.other-project-card');
+    
+    // Initially show only first 6 projects
+    const updateVisibility = () => {
+        const isMobile = window.innerWidth <= 768;
+        const initialVisible = isMobile ? 3 : 6;
+        
+        projectCards.forEach((card, index) => {
+            if (index >= initialVisible) {
+                card.style.display = 'none';
+                card.dataset.hidden = 'true';
+            }
+        });
+    };
+    
+    // Run on page load
+    updateVisibility();
+    
+    // Show more projects when button is clicked
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            const hiddenProjects = document.querySelectorAll('.other-project-card[data-hidden="true"]');
+            
+            if (hiddenProjects.length > 0) {
+                // Show all hidden projects
+                hiddenProjects.forEach(project => {
+                    project.style.display = 'flex';
+                    project.dataset.hidden = 'false';
+                    
+                    // Add animation
+                    setTimeout(() => {
+                        project.style.opacity = '1';
+                        project.style.transform = 'translateY(0)';
+                    }, 10);
+                });
+                
+                // Change button text to "Show Less"
+                showMoreBtn.textContent = 'Show Less';
+            } else {
+                // Hide projects again
+                updateVisibility();
+                
+                // Change button text back
+                showMoreBtn.textContent = 'Show More';
+            }
+        });
+    }
+    
+    // Update on window resize
+    window.addEventListener('resize', updateVisibility);
+});
+
 // Keep this DOMContentLoaded event handler for hero content
 document.addEventListener('DOMContentLoaded', function() {
     // Force scroll to top on page load
