@@ -13,6 +13,9 @@
     <!-- Custom cursor elements -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+    
+    <!-- Scanline effect for cyberpunk theme -->
+    <div class="scanline"></div>
 
     <!-- New background elements -->
     <div class="gradient-orb orb-1"></div>
@@ -138,45 +141,12 @@
      
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header reveal-on-scroll">
-                <h2>About Me</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text reveal-on-scroll">
-                    <p>I'm a passionate full-stack developer with a focus on creating clean, efficient, and user-friendly applications. With a strong foundation in both front-end and back-end technologies, I strive to build digital solutions that not only meet but exceed client expectations.</p>
-                    <p>My journey in web development began several years ago, and since then, I've been constantly learning and adapting to new technologies and methodologies. I believe in writing clean, maintainable code and creating intuitive user experiences.</p>
-                    <div class="about-buttons">
-                        <a href="#" class="btn btn-primary">Download Resume</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="about-stats reveal-on-scroll">
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-text">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-text">Projects Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-text">Happy Clients</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header reveal-on-scroll">
-                <h2>Where I've Worked</h2>
+                <h2 class="section-title" data-text="Where I've Worked">Where I've Worked</h2>
                 <div class="section-line"></div>
             </div>
             <div class="timeline-container reveal-on-scroll">
@@ -255,7 +225,7 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header reveal-on-scroll">
-                <h2>Languages & Frameworks</h2>
+                <h2 class="section-title" data-text="Languages & Frameworks">Languages & Frameworks</h2>
                 <div class="section-line"></div>
             </div>
             <div class="skills-grid reveal-on-scroll">
@@ -302,15 +272,10 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header reveal-on-scroll">
-                <h2>My Projects</h2>
+                <h2 class="section-title" data-text="My Projects">My Projects</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="project-filters reveal-on-scroll">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div>
+            <!-- Filter buttons removed as requested -->
             <div class="projects-grid reveal-on-scroll">
                 <div class="project-card" data-category="web" data-id="1">
                     <div class="project-image">
@@ -400,7 +365,7 @@
     <section id="other-projects" class="other-projects">
         <div class="container">
             <div class="section-header reveal-on-scroll">
-                <h2>Other Noteworthy Projects</h2>
+                <h2 class="section-title" data-text="Other Noteworthy Projects">Other Noteworthy Projects</h2>
                 <div class="section-line"></div>
             </div>
             
@@ -540,7 +505,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header reveal-on-scroll">
-                <h2>Get In Touch</h2>
+                <h2 class="section-title" data-text="Get In Touch">Get In Touch</h2>
                 <div class="section-line"></div>
             </div>
             <div class="contact-content reveal-on-scroll">

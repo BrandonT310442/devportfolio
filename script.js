@@ -80,38 +80,24 @@ window.addEventListener('load', revealElementsOnScroll);
 
 
 
-// Project filter functionality
-const filterProjects = (category) => {
+// Show all projects by default (filter buttons removed)
+const showAllProjects = () => {
     const projects = document.querySelectorAll('.project-card');
     
     projects.forEach(project => {
-        const projectCategory = project.getAttribute('data-category');
-        
-        if (category === 'all' || projectCategory === category) {
-            project.style.display = 'block';
-            setTimeout(() => {
-                project.style.opacity = '1';
-                project.style.transform = 'translateY(0)';
-            }, 100);
-        } else {
-            project.style.opacity = '0';
-            project.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                project.style.display = 'none';
-            }, 300);
-        }
+        project.style.display = 'block';
+        setTimeout(() => {
+            project.style.opacity = '1';
+            project.style.transform = 'translateY(0)';
+        }, 100);
     });
 };
 
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelector('.filter-btn.active').classList.remove('active');
-        btn.classList.add('active');
-        
-        const category = btn.getAttribute('data-filter');
-        filterProjects(category);
-    });
+// Initialize all projects to be visible
+document.addEventListener('DOMContentLoaded', () => {
+    showAllProjects();
 });
+
 
 // Form validation
 const contactForm = document.querySelector('.contact-form');
