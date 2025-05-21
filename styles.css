@@ -157,7 +157,7 @@
     font-size: 14px;
     text-align: center;
     animation: code-fall linear infinite;
-    text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.8);
+    text-shadow: 0 0 4px rgba(var(--primary-color-rgb), 0.8);
 }
 
 .code-column:nth-child(1) { left: 5%; animation-duration: 20s; animation-delay: 0s; }
@@ -528,7 +528,7 @@ h2.section-title::after {
     top: 0;
     left: -2px;
     color: var(--secondary-color);
-    text-shadow: 0 0 5px rgba(var(--secondary-color-rgb), 0.8);
+    text-shadow: 0 0 3px rgba(var(--secondary-color-rgb), 0.8);
     z-index: -1;
     opacity: 0.7;
     animation: glitch-anim 3s infinite alternate;
@@ -564,16 +564,16 @@ h2.section-title::after {
 :root {
     --primary-color: #00f3ff; /* Neon cyan */
     --primary-color-rgb: 0, 243, 255;
-    --secondary-color: #ff00a0; /* Neon pink */
-    --secondary-color-rgb: 255, 0, 160;
-    --accent-color: #fc0fc0; /* Hot pink */
-    --accent-color-rgb: 252, 15, 192;
+    --secondary-color: #d64f9e; /* Subdued pink */
+    --secondary-color-rgb: 214, 79, 158;
+    --accent-color: #c64a96; /* Subdued hot pink */
+    --accent-color-rgb: 198, 74, 150;
     --text-color: #e6f1ff;
     --text-color-light: #8892b0;
     --bg-color: #0a0a18; /* Darker background */
     --bg-color-light: #1a1a2e; /* Darker secondary background */
-    --neon-glow: 0 0 5px rgba(var(--primary-color-rgb), 0.5), 0 0 10px rgba(var(--primary-color-rgb), 0.5), 0 0 15px rgba(var(--primary-color-rgb), 0.5), 0 0 20px rgba(var(--primary-color-rgb), 0.8);
-    --neon-text-shadow: 0 0 5px rgba(var(--primary-color-rgb), 0.8), 0 0 10px rgba(var(--primary-color-rgb), 0.8), 0 0 15px rgba(var(--primary-color-rgb), 0.8), 0 0 20px rgba(var(--primary-color-rgb), 1);
+    --neon-glow: 0 0 3px rgba(var(--primary-color-rgb), 0.5), 0 0 6px rgba(var(--primary-color-rgb), 0.5), 0 0 9px rgba(var(--primary-color-rgb), 0.5), 0 0 12px rgba(var(--primary-color-rgb), 0.7);
+    --neon-text-shadow: 0 0 2px rgba(var(--primary-color-rgb), 0.8), 0 0 4px rgba(var(--primary-color-rgb), 0.7), 0 0 6px rgba(var(--primary-color-rgb), 0.6), 0 0 8px rgba(var(--primary-color-rgb), 0.5);
     --transition: all 0.3s ease;
     --border-radius: 4px; /* Sharper edges for cyberpunk feel */
 }
@@ -827,7 +827,7 @@ nav a {
 
 nav a:hover {
     color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(var(--primary-color-rgb), 0.8), 0 0 10px rgba(var(--primary-color-rgb), 0.4);
+    text-shadow: 0 0 3px rgba(var(--primary-color-rgb), 0.8), 0 0 6px rgba(var(--primary-color-rgb), 0.4);
 }
 
 nav a::after {
@@ -849,7 +849,7 @@ nav a.active::after {
 
 nav a.active {
     color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(var(--primary-color-rgb), 0.8), 0 0 10px rgba(var(--primary-color-rgb), 0.4);
+    text-shadow: 0 0 3px rgba(var(--primary-color-rgb), 0.8), 0 0 6px rgba(var(--primary-color-rgb), 0.4);
 }
 
 .theme-toggle {
@@ -926,11 +926,11 @@ nav a.active {
     }
     2%, 8%, 22%, 38%, 62%, 68%, 82%, 98% {
         transform: translate(-2px, 0);
-        text-shadow: 0 0 8px rgba(var(--secondary-color-rgb), 0.8), 0 0 12px rgba(var(--secondary-color-rgb), 0.8);
+        text-shadow: 0 0 4px rgba(var(--secondary-color-rgb), 0.8), 0 0 6px rgba(var(--secondary-color-rgb), 0.6);
     }
     4%, 24%, 44%, 64%, 84% {
         transform: translate(2px, 0);
-        text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.8), 0 0 12px rgba(var(--primary-color-rgb), 0.8);
+        text-shadow: 0 0 4px rgba(var(--primary-color-rgb), 0.8), 0 0 6px rgba(var(--primary-color-rgb), 0.6);
     }
 }
 
@@ -939,7 +939,7 @@ nav a.active {
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--text-color);
-    text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+    text-shadow: 0 0 3px rgba(var(--accent-color-rgb), 0.5);
 }
 
 .hero-content p {
@@ -1650,13 +1650,13 @@ section:hover::before {
     color: var(--text-color);
     font-weight: 700;
     transition: var(--transition);
-    text-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.2);
     letter-spacing: 0.5px;
 }
 
 .project-card:hover .project-info h3 {
     color: var(--primary-color);
-    text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+    text-shadow: 0 0 7px rgba(100, 255, 218, 0.3);
 }
 
 .project-info p {
