@@ -1,0 +1,340 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y));
+    opacity: 0.2;
+  }
+}
+
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.particle {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.7);
+  filter: blur(0.5px);
+  animation: particleFloat infinite alternate;
+  /* Animation duration is now controlled by inline style */
+}
+
+.ambient-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  mix-blend-mode: overlay;
+  animation: ambientPulse 8s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/roombg3-ed.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: backgroundShift 20s infinite ease-in-out;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { transform: scale(1.02); filter: brightness(0.98); }
+  50% { transform: scale(1); filter: brightness(1); }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.content p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.monitor-login-container {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.login-button,
+.login-button *,
+.login-button :after,
+.login-button :before,
+.login-button:after,
+.login-button:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.login-button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 66%;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+  border-radius: 99rem;
+  border-width: 1.3px;
+  overflow: hidden;
+  padding: 0.5rem 2rem;
+  position: relative;
+  top:135%;
+  margin-left:-15px;
+  animation: buttonPulse 2s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.login-button:hover {
+  transform: scale(1.1);
+}
+
+.login-button span {
+  font-weight: 300;
+  mix-blend-mode: difference;
+}
+
+.login-button:before {
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 50%;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s;
+  width: 0;
+}
+
+.login-button:hover:before {
+  width: 100%;
+}
+
+.terminal-container {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: -5px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  height: 40%;
+  z-index: 2;
+  transition: all 0.5s ease-in-out;
+  animation: terminalAppear 0.5s ease-in-out;
+  background-color: #282a36;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.7rem; /* Reduced font size for monitor view */
+}
+
+.terminal-container.fullscreen {
+  top: 50%;
+  width: 90%;
+  height: 90%;
+  background: #282a36;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  font-size: 1rem; /* Normal font size for fullscreen */
+}
+
+/* Dracula theme terminal styles */
+.react-terminal-wrapper {
+  background-color: #282a36 !important;
+  color: #f8f8f2 !important;
+  font-family: 'Fira Code', monospace !important;
+  padding: 20px !important;
+  transform: scale(0.9); /* Slightly zoom out the terminal content */
+  transform-origin: top left;
+}
+
+.toggle-fullscreen {
+  position: absolute;
+  top: 10px; /* Moved button down */
+  right: 10px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.toggle-fullscreen:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes terminalAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes subtlePulse {
+  0% {
+    transform: scale(1);
+    border-color: rgba(134, 168, 168, 0.4);
+    box-shadow: 0 0 10px rgba(134, 168, 168, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    border-color: rgba(134, 168, 168, 0.7);
+    box-shadow: 0 0 20px rgba(134, 168, 168, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    border-color: rgba(134, 168, 168, 0.4);
+    box-shadow: 0 0 10px rgba(134, 168, 168, 0.3);
+  }
+}
+
+.terminal-container .react-terminal-wrapper {
+  font-size: 0.6rem !important;
+  line-height: 1.2 !important;
+}
+
+.terminal-container .react-terminal-line {
+  font-size: 0.6rem !important;
+  line-height: 1.2 !important;
+}
+
+.terminal-container .react-terminal-input {
+  font-size: 0.6rem !important;
+  line-height: 1.2 !important;
+}
+
+.react-terminal-line {
+  color: #f8f8f2 !important;
+}
+
+.react-terminal-prompt {
+  color: #50fa7b !important;
+}
+
+.react-terminal-input {
+  color: #bd93f9 !important;
+}
+
+.react-terminal-error {
+  color: #ff5555 !important;
+}
+
+/* Responsive styles for login button */
+@media (max-width: 768px) {
+  .login-button {
+    font-size: 55%;
+    padding: 0.4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-button {
+    font-size: 45%;
+    padding: 0.3rem 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .login-button {
+    font-size: 75%;
+    padding: 0.6rem 2.5rem;
+  }
+}
