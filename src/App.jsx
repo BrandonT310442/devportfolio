@@ -5,6 +5,7 @@ import { ReactTerminal, TerminalContextProvider } from 'react-terminal'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [backgroundImage, setBackgroundImage] = useState('/roombg3-ed.png')
 
   const commands = {
     help: 'Available commands: help, clear, whoami',
@@ -42,7 +43,7 @@ function App() {
       <div 
         className="background-image" 
         style={{
-          backgroundImage: "url('/roombg3-ed.png')",
+          backgroundImage: `url('${backgroundImage}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -54,7 +55,10 @@ function App() {
       {createParticles()}
       {!isLoggedIn ? (
         <div className="monitor-login-container">
-          <button className="login-button" onClick={() => setIsLoggedIn(true)}><span>LOGIN</span></button>
+          <button className="login-button" onClick={() => {
+            setIsLoggedIn(true);
+            setBackgroundImage('/roombg3.png');
+          }}><span>LOGIN</span></button>
         </div>
       ) : (
         <div className={`terminal-container ${isFullscreen ? 'fullscreen' : ''}`}>
