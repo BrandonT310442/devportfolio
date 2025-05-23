@@ -73,14 +73,8 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
                 <div className="skills-grid">
                   {skills.map((skill, index) => (
                     <div key={index} className="skill-item">
-                      <span className="skill-icon">{skill.icon}</span>
+                      <img src={skill.logo} alt={skill.name} className="skill-logo" />
                       <span className="skill-name">{skill.name}</span>
-                      <div className="skill-bar">
-                        <div 
-                          className="skill-progress" 
-                          style={{ width: `${skill.proficiency}%` }}
-                        />
-                      </div>
                     </div>
                   ))}
                 </div>
