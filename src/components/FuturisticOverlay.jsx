@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './FuturisticOverlay.css';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 
@@ -6,27 +6,37 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const carouselRef = useRef(null);
 
+  // Reset current project index when overlay is closed
+  useEffect(() => {
+    if (!isVisible) {
+      setCurrentProjectIndex(0);
+    }
+  }, [isVisible]);
+
   const handlePreviousProject = () => {
-    if (type === 'projects' && currentProjectIndex > 0) {
-      setCurrentProjectIndex(prev => prev - 1);
-      scrollToProject(currentProjectIndex - 1);
+    if (type === 'projects') {
+      if (currentProjectIndex > 0) {
+        setCurrentProjectIndex(prev => prev - 1);
+      } else {
+        // Loop to the end if at the beginning
+        setCurrentProjectIndex(content.length - 1);
+      }
     }
   };
 
   const handleNextProject = () => {
-    if (type === 'projects' && currentProjectIndex < content.length - 1) {
-      setCurrentProjectIndex(prev => prev + 1);
-      scrollToProject(currentProjectIndex + 1);
+    if (type === 'projects') {
+      if (currentProjectIndex < content.length - 1) {
+        setCurrentProjectIndex(prev => prev + 1);
+      } else {
+        // Loop to the beginning if at the end
+        setCurrentProjectIndex(0);
+      }
     }
   };
 
-  const scrollToProject = (index) => {
-    if (carouselRef.current) {
-      const projectCard = carouselRef.current.children[index];
-      if (projectCard) {
-        projectCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
+  const goToProject = (index) => {
+    setCurrentProjectIndex(index);
   };
 
   useKeyboardNavigation(isVisible, onClose, type, handlePreviousProject, handleNextProject);
@@ -106,32 +116,46 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
         return (
           <div className="projects-content">
             <h2>Projects</h2>
-            <div className="project-carousel" ref={carouselRef}>
+            <div className="project-carousel-container">
               <button 
                 className="carousel-nav prev" 
                 onClick={handlePreviousProject}
-                style={{ visibility: currentProjectIndex > 0 ? 'visible' : 'hidden' }}
               >
                 ‹
               </button>
-              {content.map((project, index) => (
-                <div key={index} className="project-card">
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <div className="tech-stack">
-                    {project.techStack.map((tech, i) => (
-                      <span key={i} className="tech-tag">{tech}</span>
-                    ))}
+              <div className="project-carousel" ref={carouselRef}>
+                {content.length > 0 && (
+                  <div className="project-card" key={currentProjectIndex}>
+                    <div className="project-image-placeholder">
+                      <div className="placeholder-text">Project Image</div>
+                    </div>
+                    <h3>{content[currentProjectIndex].name}</h3>
+                    <p>{content[currentProjectIndex].description}</p>
+                    <div className="tech-stack">
+                      {content[currentProjectIndex].techStack.map((tech, i) => (
+                        <span key={i} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )}
+              </div>
               <button 
                 className="carousel-nav next" 
                 onClick={handleNextProject}
-                style={{ visibility: currentProjectIndex < content.length - 1 ? 'visible' : 'hidden' }}
               >
                 ›
               </button>
+              
+              <div className="carousel-indicators">
+                {content.map((_, index) => (
+                  <button 
+                    key={index} 
+                    className={`indicator-dot ${index === currentProjectIndex ? 'active' : ''}`}
+                    onClick={() => goToProject(index)}
+                    aria-label={`Go to project ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         );
