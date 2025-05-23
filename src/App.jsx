@@ -59,7 +59,7 @@ function App() {
       ) : (
         <div className={`terminal-container ${isFullscreen ? 'fullscreen' : ''}`}>
           <button className="toggle-fullscreen" onClick={() => setIsFullscreen(!isFullscreen)}>
-            {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+            {isFullscreen ? '⤢' : '⤢'}
           </button>
           <TerminalContextProvider>
             <ReactTerminal
@@ -67,6 +67,10 @@ function App() {
               theme="dracula"
               showControlBar={false}
               prompt="visitor@portfolio $"
+              welcomeMessage="Welcome to my portfolio! Type 'help' to get a full list of commands.
+              
+
+              "
             />
           </TerminalContextProvider>
         </div>
