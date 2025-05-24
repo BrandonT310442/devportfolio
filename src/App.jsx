@@ -14,6 +14,7 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState('/roombg3-ed.png')
   const [overlayVisible, setOverlayVisible] = useState(false)
   const [overlayType, setOverlayType] = useState(null)
+  const [showNavOverlay, setShowNavOverlay] = useState(false)
   
   // Reference to the app container for fullscreen functionality
   const appContainerRef = React.useRef(null)
@@ -116,9 +117,19 @@ function App() {
   return (
     <div className={`app-container ${isAppFullscreen ? 'app-fullscreen' : ''}`} ref={appContainerRef}>
       {isLoading ? (
-        <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+        <LoadingScreen onLoadingComplete={() => {
+          setIsLoading(false);
+          setShowNavOverlay(true);
+        }} />
       ) : (
         <>
+          {showNavOverlay && (
+            <FuturisticOverlay
+              isVisible={showNavOverlay}
+              onClose={() => setShowNavOverlay(false)}
+              type="navigation"
+            />
+          )}
           <RoomOverlay onButtonClick={(name) => alert(`Clicked: ${name}`)} />
           <div 
             className="background-image" 
@@ -159,7 +170,10 @@ function App() {
                   theme="dracula"
                   showControlBar={false}
                   prompt="visitor@portfolio $"
-                  welcomeMessage="Welcome to my portfolio! Type 'help' to get a full list of commands.\n"
+                  welcomeMessage="Welcome to my portfolio! Type 'help' for commands.
+                  
+                  
+                  "
                 />
               </TerminalContextProvider>
             </div>
