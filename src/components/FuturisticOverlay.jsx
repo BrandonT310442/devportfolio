@@ -69,6 +69,21 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
 
   const renderContent = () => {
     switch (type) {
+      case 'item-detail':
+        return (
+          <div className="item-detail-content">
+            <h2>{content.title}</h2>
+            <p className="item-description">{content.description}</p>
+            <div className="item-details">
+              <ul>
+                {content.details.map((detail, index) => (
+                  <li key={index}>{detail}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+
       case 'about':
         return (
           <div className="about-content">

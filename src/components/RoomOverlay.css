@@ -7,6 +7,22 @@
   pointer-events: none;
   z-index: 10;
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px 0 var(--btn-color, rgba(255, 255, 255, 0.7));
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 8px 6px var(--btn-color, rgba(255, 255, 255, 0));
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px 0 var(--btn-color, rgba(255, 255, 255, 0));
+  }
+}
+
 .room-glow-btn {
   position: absolute;
   width: 24px;
@@ -22,12 +38,21 @@
   transition: box-shadow 0.2s, transform 0.2s;
   outline: none;
   animation: pulse 2s infinite;
+  /* Ensure perfect circle */
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  /* Prevent any deformation */
+  flex-shrink: 0;
+  transform-origin: center center;
 }
-.room-glow-btn:focus, .room-glow-btn:hover {
-  box-shadow: 0 0 16px 4px #fff, 0 0 8px 2px var(--btn-color, #fff);
-  transform: scale(1.2);
+
+.room-glow-btn:focus, 
+.room-glow-btn:hover {
+  box-shadow: 0 0 16px 8px var(--btn-color, #fff), 0 0 12px 4px var(--btn-color, #fff);
+  transform: scale(1.3);
   animation: none;
 }
+
 .glow-dot {
   width: 8px;
   height: 8px;
@@ -35,19 +60,7 @@
   background: #fff;
   box-shadow: 0 0 8px 4px currentColor;
   display: block;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-  }
+  /* Ensure the dot is also perfectly circular */
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
