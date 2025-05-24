@@ -1,6 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './FuturisticOverlay.css';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faJs, faPython, faJava, faReact, faNodeJs, faAws, faGit, faDocker } from '@fortawesome/free-brands-svg-icons';
+import { faServer, faDatabase, faCode } from '@fortawesome/free-solid-svg-icons';
+
+// Map skill names to Font Awesome icons
+const skillIconMap = {
+  // Languages
+  'JavaScript': faJs,
+  'Python': faPython,
+  'Java': faJava,
+  'C++': faCode,
+  
+  // Frameworks & Libraries
+  'React': faReact,
+  'Node.js': faNodeJs,
+  'Express': faServer,
+  'Django': faCode,
+  
+  // Tools & Technologies
+  'Git': faGit,
+  'Docker': faDocker,
+  'AWS': faAws,
+  'MongoDB': faDatabase
+};
 
 const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -48,6 +72,8 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
       case 'about':
         return (
           <div className="about-content">
+            <div className="profile-picture-placeholder" style={{ backgroundImage: 'url(/portfolio.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            </div>
             <h2>About Me</h2>
             <div className="bio-text">
               {content.bio}
@@ -73,7 +99,17 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
                 <div className="skills-grid">
                   {skills.map((skill, index) => (
                     <div key={index} className="skill-item">
-                      <img src={skill.logo} alt={skill.name} className="skill-logo" />
+                      <div className="skill-icon">
+                        {skillIconMap[skill.name] ? (
+                          <FontAwesomeIcon 
+                            icon={skillIconMap[skill.name]} 
+                            size="2x" 
+                            title={skill.name} 
+                          />
+                        ) : (
+                          <span className="fallback-icon">{skill.icon}</span>
+                        )}
+                      </div>
                       <span className="skill-name">{skill.name}</span>
                     </div>
                   ))}
@@ -162,7 +198,22 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
   return (
     <div className={`futuristic-overlay ${isVisible ? 'visible' : ''}`}>
       <div className="overlay-content">
-        <button className="close-button" onClick={onClose}>×</button>
+        <button 
+          className="close-button" 
+          onClick={onClose} 
+          style={{ 
+            width: '40px', 
+            height: '40px', 
+            borderRadius: '50%',
+            padding: '0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            lineHeight: '1'
+          }}
+        >
+          ×
+        </button>
         <div className="content-wrapper">
           {renderContent()}
         </div>

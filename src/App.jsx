@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { ReactTerminal, TerminalContextProvider } from 'react-terminal'
 import FuturisticOverlay from './components/FuturisticOverlay'
 import { portfolioData } from './data/portfolioData'
+import RoomOverlay from './components/RoomOverlay';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -112,6 +113,7 @@ function App() {
 
   return (
     <div className={`app-container ${isAppFullscreen ? 'app-fullscreen' : ''}`} ref={appContainerRef}>
+      <RoomOverlay onButtonClick={(name) => alert(`Clicked: ${name}`)} />
       <div 
         className="background-image" 
         style={{
