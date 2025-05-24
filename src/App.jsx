@@ -4,8 +4,10 @@ import { ReactTerminal, TerminalContextProvider } from 'react-terminal'
 import FuturisticOverlay from './components/FuturisticOverlay'
 import { portfolioData } from './data/portfolioData'
 import RoomOverlay from './components/RoomOverlay';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isAppFullscreen, setIsAppFullscreen] = useState(false)
@@ -113,61 +115,63 @@ function App() {
 
   return (
     <div className={`app-container ${isAppFullscreen ? 'app-fullscreen' : ''}`} ref={appContainerRef}>
-      <RoomOverlay onButtonClick={(name) => alert(`Clicked: ${name}`)} />
-      <div 
-        className="background-image" 
-        style={{
-          backgroundImage: `url('${backgroundImage}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          height: '100%',
-          width: '100%'
-        }}
-      />
-      <div className="ambient-light" />
-      {createParticles()}
-      
-      {/* Fullscreen toggle button */}
-      <button 
-        className="app-fullscreen-toggle" 
-        onClick={toggleAppFullscreen}
-        title={isAppFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
-      >
-        {isAppFullscreen ? '⤢' : '⤢'}
-      </button>
-      {!isLoggedIn ? (
-        <div className="monitor-login-container">
-          <button className="login-button" onClick={() => {
-            setIsLoggedIn(true);
-            setBackgroundImage('/roombg3.png');
-          }}><span>LOGIN</span></button>
-        </div>
+      {isLoading ? (
+        <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
       ) : (
-        <div className={`terminal-container ${isFullscreen ? 'fullscreen' : ''}`}>
-          <button className="toggle-fullscreen" onClick={() => setIsFullscreen(!isFullscreen)}>
-            {isFullscreen ? '⤢' : '⤢'}
+        <>
+          <RoomOverlay onButtonClick={(name) => alert(`Clicked: ${name}`)} />
+          <div 
+            className="background-image" 
+            style={{
+              backgroundImage: `url('${backgroundImage}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              height: '100%',
+              width: '100%'
+            }}
+          />
+          <div className="ambient-light" />
+          {createParticles()}
+          
+          <button 
+            className="app-fullscreen-toggle" 
+            onClick={toggleAppFullscreen}
+            title={isAppFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+          >
+            {isAppFullscreen ? '⤢' : '⤢'}
           </button>
-          <TerminalContextProvider>
-            <ReactTerminal
-              commands={commands}
-              theme="dracula"
-              showControlBar={false}
-              prompt="visitor@portfolio $"
-              welcomeMessage="Welcome to my portfolio! Type 'help' to get a full list of commands.
-              
-
-              "
-            />
-          </TerminalContextProvider>
-        </div>
+          {!isLoggedIn ? (
+            <div className="monitor-login-container">
+              <button className="login-button" onClick={() => {
+                setIsLoggedIn(true);
+                setBackgroundImage('/roombg3.png');
+              }}><span>LOGIN</span></button>
+            </div>
+          ) : (
+            <div className={`terminal-container ${isFullscreen ? 'fullscreen' : ''}`}>
+              <button className="toggle-fullscreen" onClick={() => setIsFullscreen(!isFullscreen)}>
+                {isFullscreen ? '⤢' : '⤢'}
+              </button>
+              <TerminalContextProvider>
+                <ReactTerminal
+                  commands={commands}
+                  theme="dracula"
+                  showControlBar={false}
+                  prompt="visitor@portfolio $"
+                  welcomeMessage="Welcome to my portfolio! Type 'help' to get a full list of commands.\n"
+                />
+              </TerminalContextProvider>
+            </div>
+          )}
+          <FuturisticOverlay
+            isVisible={overlayVisible}
+            onClose={() => setOverlayVisible(false)}
+            type={overlayType}
+            content={overlayType ? portfolioData[overlayType] : null}
+          />
+        </>
       )}
-      <FuturisticOverlay
-        isVisible={overlayVisible}
-        onClose={() => setOverlayVisible(false)}
-        type={overlayType}
-        content={overlayType ? portfolioData[overlayType] : null}
-      />
     </div>
   )
 }

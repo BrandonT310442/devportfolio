@@ -46,13 +46,11 @@ const ITEM_DESCRIPTIONS = {
   }
 };
 
-const RoomOverlay = ({ onButtonClick }) => {
+const RoomOverlay = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (itemName) => {
     setSelectedItem(itemName);
-    // Removed alert functionality
-    if (onButtonClick) onButtonClick(itemName);
   };
 
   return (
