@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import './FuturisticOverlay.css';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJs, faPython, faJava, faReact, faNodeJs, faAws, faGit, faDocker } from '@fortawesome/free-brands-svg-icons';
-import { faServer, faDatabase, faCode } from '@fortawesome/free-solid-svg-icons';
+import {faGithubAlt, faGoogle,faVuejs, faJs,faPhp,faPython, faJava, faAndroid, faReact, faNodeJs, faAws, faGit, faDocker } from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane,faGears, faCode } from '@fortawesome/free-solid-svg-icons'
+
+import {faSatelliteDish, faServer,faTable, faDatabase, faFeatherPointed} from '@fortawesome/free-solid-svg-icons';
 
 // Map skill names to Font Awesome icons
 const skillIconMap = {
@@ -11,19 +13,29 @@ const skillIconMap = {
   'JavaScript': faJs,
   'Python': faPython,
   'Java': faJava,
-  'C++': faCode,
+  'C': faGears,
+  'Kotlin': faAndroid,
+  'TypeScript': faCode,
+  'Lua': faFeatherPointed,
+  'PHP': faPhp,
+  'SQL': faTable,
   
   // Frameworks & Libraries
   'React': faReact,
   'Node.js': faNodeJs,
-  'Express': faServer,
-  'Django': faCode,
+  'Express.js': faServer,
+  'Vue.js': faVuejs,
   
   // Tools & Technologies
   'Git': faGit,
   'Docker': faDocker,
   'AWS': faAws,
-  'MongoDB': faDatabase
+  'MongoDB': faDatabase,
+  'Postman': faPaperPlane,
+  'Render': faSatelliteDish,
+  'Firebase': faGoogle,
+  'Bash': faGithubAlt
+
 };
 
 const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
@@ -115,15 +127,18 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
                   {skills.map((skill, index) => (
                     <div key={index} className="skill-item">
                       <div className="skill-icon">
-                        {skillIconMap[skill.name] ? (
+                       {skillIconMap[skill.name] ? (
                           <FontAwesomeIcon 
-                            icon={skillIconMap[skill.name]} 
+                             icon={skillIconMap[skill.name]} 
                             size="2x" 
                             title={skill.name} 
                           />
                         ) : (
-                          <span className="fallback-icon">{skill.icon}</span>
-                        )}
+                            <FontAwesomeIcon 
+                             icon={skillIconMap[skill.icon]} 
+                            size="2x" 
+                            title={skill.icon} 
+                          />                        )}
                       </div>
                       <span className="skill-name">{skill.name}</span>
                     </div>
@@ -213,13 +228,12 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
               <h2>How to Navigate</h2>
               <div className="bio-text" style={{textAlign: 'left'}}>
                 <ul style={{lineHeight: '2'}}>
-                  <li><b>Welcome</b> to my room below are instructions for how to navigate it!</li>
                   <li><b>Recommendation </b> For the best experience view this website in full screen by clicking the button on the top right.</li>
                   <li><b>If you are on a mobile device view this website in landscape mode. </b></li>
 
                   <li><b>1. Click Login</b> to access the interactive terminal and more features.</li>
                   <li><b>2. Use the terminal</b> to type commands like <code>about</code>, <code>skills</code>, <code>experience</code>, <code>projects</code>.</li>
-                  <li><b>3. Explore the room:</b> Click on the glowing particles on various items in the room ie. the Raptors Jersey, Xbox etc. to discover more about me.</li>
+                  <li><b>3. Explore the room:</b> Click on the glowing colored particles on various items in the room ie. the Raptors Jersey, Xbox etc. to discover more about me.</li>
           
                
                 </ul>

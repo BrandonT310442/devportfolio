@@ -4,12 +4,12 @@ import FuturisticOverlay from "./FuturisticOverlay";
 
 // Item descriptions and positions
 const ITEMS = [
-  { name: "Xbox Controller", left: "20%", top: "77%", color: "#5a5a5a" }, // muted gray
-  { name: "Pikachu Mug", left: "63%", top: "74%", color: "#d4b830" }, // muted yellow
-  { name: "Rubik's Cube", left: "74%", top: "67%", color: "#b8392e" }, // muted red
-  { name: "Raptors Jersey", left: "80%", top: "15%", color: "#8b1a1a" }, // muted dark red
+  { name: "Xbox Controller", left: "20%", top: "77%", color: "#00FF00" }, // muted gray
+  { name: "Pikachu Mug", left: "63%", top: "74%", color: "#0096FF" }, // muted yellow
+  { name: "Rubik's Cube", left: "74%", top: "67%", color: "#FF00FF" }, // muted red
+  { name: "Raptors Jersey", left: "80%", top: "15%", color: "#FF0000" }, // muted dark red
   { name: "Baseball", left: "82%", top: "68%", color: "#c4c4c4" }, // muted white/light gray
-  { name: "Toronto Banner", left: "27%", top: "17%", color: "#2e5a8b" } // muted blue
+  { name: "Toronto Banner", left: "27%", top: "17%", color: "#FFFF00" } // muted blue
 ];
 
 // Item descriptions
@@ -56,7 +56,7 @@ const RoomOverlay = () => {
   return (
     <>
       <div className="room-overlay">
-        {ITEMS.map((btn, idx) => (
+        {ITEMS.map((btn) => (
       <button
         key={btn.name}
         className="room-glow-btn"

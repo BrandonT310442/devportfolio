@@ -496,3 +496,149 @@
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
+
+/* Work Experience Section Styles */
+.experience-content {
+  padding: 1rem;
+}
+
+.experience-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.timeline-date {
+  min-width: 100px;
+  font-weight: bold;
+  color: #ffffffcc;
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.timeline-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #00ffe1;
+  padding: 1rem 1rem 0.75rem 1.25rem;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.timeline-content h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: #00ffe1;
+  font-weight: 500;
+}
+
+.timeline-content ul {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.timeline-content li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  color: #e0e0e0;
+}
+
+.timeline-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00ffe1;
+}
+
+/* === Global Accent Color Update === */
+:root {
+  --accent-color: #00ffe1;
+  --accent-bg: rgba(0, 255, 225, 0.1);
+  --accent-border: rgba(0, 255, 225, 0.2);
+}
+
+
+
+/* === About Section Improvements === */
+.interests li {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+.interests li:hover {
+  background: rgba(0, 255, 225, 0.15);
+}
+
+/* === Skills Section Updates === */
+.skill-item:hover {
+  background: rgba(0, 255, 225, 0.1);
+  box-shadow: 0 5px 15px var(--accent-bg);
+}
+
+
+/* === Experience Section (already good but updated slightly) === */
+.timeline-content h3 {
+  color: #ffffff;
+}
+.timeline-content h4 {
+  color: var(--accent-color);
+}
+.timeline-content li::before {
+  color: var(--accent-color);
+}
+
+/* === Projects Section Updates === */
+.project-card {
+  border-color: var(--accent-border);
+}
+.tech-tag {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+}
+.tech-tag:hover {
+  background: rgba(0, 255, 225, 0.15);
+}
+
+/* === Navigation & Button Hover Effects === */
+.carousel-nav {
+  color: var(--accent-color);
+  background: rgba(0, 255, 225, 0.08);
+  box-shadow: 0 0 10px var(--accent-bg);
+}
+.carousel-nav:hover {
+  background: rgba(0, 255, 225, 0.15);
+  color: var(--accent-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.indicator-dot.active {
+  background: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-bg);
+}
+
+/* === Close Button Accent === */
+.close-button:hover {
+  background: var(--accent-bg);
+  color: var(--accent-color);
+}
