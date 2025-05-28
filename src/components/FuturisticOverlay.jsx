@@ -3,7 +3,7 @@ import './FuturisticOverlay.css';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faGithubAlt, faGoogle,faVuejs, faJs,faPhp,faPython, faJava, faAndroid, faReact, faNodeJs, faAws, faGit, faDocker } from '@fortawesome/free-brands-svg-icons';
-import { faPaperPlane,faGears, faCode } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane,faGears, faCode, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 import {faSatelliteDish, faServer,faTable, faDatabase, faFeatherPointed} from '@fortawesome/free-solid-svg-icons';
 
@@ -186,15 +186,50 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
               <div className="project-carousel" ref={carouselRef}>
                 {content.length > 0 && (
                   <div className="project-card" key={currentProjectIndex}>
-                    <div className="project-image-placeholder">
-                      <div className="placeholder-text">Project Image</div>
+                    <div className="project-image-container">
+                      <img 
+                        src={content[currentProjectIndex].imagePath} 
+                        alt={content[currentProjectIndex].name}
+                        className="project-image"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="project-image-placeholder" style={{display: 'none'}}>
+                        <div className="placeholder-text">Project Image</div>
+                      </div>
                     </div>
-                    <h3>{content[currentProjectIndex].name}</h3>
-                    <p>{content[currentProjectIndex].description}</p>
-                    <div className="tech-stack">
-                      {content[currentProjectIndex].techStack.map((tech, i) => (
-                        <span key={i} className="tech-tag">{tech}</span>
-                      ))}
+                    <div className="project-info">
+                      <h3>{content[currentProjectIndex].name}</h3>
+                      <p>{content[currentProjectIndex].description}</p>
+                      <div className="tech-stack">
+                        {content[currentProjectIndex].techStack.map((tech, i) => (
+                          <span key={i} className="tech-tag">{tech}</span>
+                        ))}
+                      </div>
+                      <div className="project-links">
+                        {content[currentProjectIndex].githubLink && (
+                          <a 
+                            href={content[currentProjectIndex].githubLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="project-link github-link"
+                          >
+                            <FontAwesomeIcon icon={faGithubAlt} />
+                          </a>
+                        )}
+                        {content[currentProjectIndex].demoLink && (
+                          <a 
+                            href={content[currentProjectIndex].demoLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="project-link demo-link"
+                          >
+                            <FontAwesomeIcon icon={faExternalLinkAlt} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}

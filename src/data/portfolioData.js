@@ -55,7 +55,7 @@ export const portfolioData = {
       role: "Full Stack Software Engineer",
       date: "May 2025 - Present",
       achievements: [
-        "Built Stryde’s iPadOS patient app in Swift , integrating test and sensor data into a secure AWS backend using Node.js , Express , and MongoDB .",
+        "Built Stryde's iPadOS patient app in Swift , integrating test and sensor data into a secure AWS backend using Node.js , Express , and MongoDB .",
         "Developed a React dashboard for clinicians with REST APIs and real-time data sync to support stroke recovery tracking and decisions.",
 
       ]
@@ -92,24 +92,40 @@ export const portfolioData = {
   
   projects: [
     {
-      name: "AI-Powered Analytics Platform",
-      description: "A machine learning platform that provides predictive analytics for business metrics.",
-      techStack: ["Python", "TensorFlow", "React", "AWS"]
+      name: "Qnect",
+      description: "An AI powered blind dating app that uses LLMs to match users based on interests and preferences.",
+      techStack: ["Vue.js", "Node.js", "MongoDB", "Express.js", "Groq LLM API", "Imentiv API"],
+      githubLink: "https://github.com/fredh2006/qnect",
+      demoLink: "https://www.youtube.com/watch?v=k2-dmvFxZMg",
+      imagePath: "/public/qnect.png"
     },
     {
-      name: "E-Commerce Solution",
-      description: "Full-stack e-commerce platform with real-time inventory management.",
-      techStack: ["Node.js", "React", "MongoDB", "Redis"]
+      name: "Vortex AI",
+      description: "A mobile AI app that combines language and image models into one easy to use mobile application. Utilizes the Groq API and StableDiffusion API.",
+      techStack: ["React Native", "ExpoGo", "Groq LLM API", "StableDiffusion API"],
+      githubLink: "https://github.com/BrandonT310442/VortexAI2",
+      imagePath: "/public/Vortex4.png"
     },
     {
-      name: "Social Media Dashboard",
-      description: "Unified dashboard for managing multiple social media accounts.",
-      techStack: ["Vue.js", "Express", "GraphQL", "PostgreSQL"]
+      name: "FRC Data Analytics App",
+      description: "A app designed for the FRC 2024 Crescendo Season that analyzes robot performance data to help teams make strategic alliance selections.",
+      techStack: ["Vue.js", "Express", "MongoDB", "Node.js"],
+      demoLink: "https://crescendoscoutingapp.onrender.com/",
+      imagePath: "/public/FRC.png"
     },
     {
-      name: "Smart Home IoT System",
-      description: "IoT system for home automation with mobile app control.",
-      techStack: ["React Native", "Node.js", "MQTT", "MongoDB"]
+      name: "Vendoza Marketplace",
+      description: "An online marketplace application that allows users to purchase and sell items. Includes a built in chat system and authentication for users using Passsport.js.",
+      techStack: ["Passport.js", "Vue.js", "Express.js", "MongoDB","Node.js"],
+      githubLink: "https://github.com/RayhanMamdani/WebStackApp",
+      imagePath: "/public/Vendoza.png"
+    },
+        {
+      name: "NBA Sports Stats App",
+      description: "NBA web application that stored and retrieved live NBA stats. Includes NBA News via the RSS imageboard. Statistics were updated every day for 2022-2023 NBA Season, using the NBA API.",
+      techStack: ["HTML", "CSS", "JavaScript", "Bulma","NBA API"],
+      githubLink: "https://github.com/BrandonT310442/ICS4U-2022-23/tree/main/Introduction%20to%20Javascript/Sports%20Stats%20Project",
+      imagePath: "/public/NBA.png"
     }
   ]
 };
