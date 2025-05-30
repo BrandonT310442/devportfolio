@@ -15,19 +15,16 @@ const ITEMS = [
 // Item descriptions
 const ITEM_DESCRIPTIONS = {
   "Xbox Controller": {
-    title: "Gaming Setup",
-    description: "My gaming corner where I unwind with favorite titles and explore virtual worlds.",
-    details: ["Favorite games: Halo, FIFA, NBA 2K", "Platform: Xbox Series X", "Gaming as a way to relax and connect with friends"]
+    title: "Xbox",
+    description: "This is my Xbox, my favorite gaming console. I love playing with friends, and some of my favourite games are NBA 2K, Madden, Forza Horizon, and Fortnite. It's my go-to for fun and excitement.",
   },
   "Pikachu Mug": {
     title: "Pokémon Collection",
-    description: "A cherished piece from my Pokémon merchandise collection, representing my love for the franchise.",
-    details: ["Favorite Pokémon: Pikachu", "Collector since childhood", "Symbol of nostalgia and fun"]
+    description: " Pokémon was my first game and started my love for gaming. This Pikachu mug reminds me of catching my first Pokémon, exploring new regions, and battling friends. Fun fact: I'm level 40 in Pokémon GO and still hunting for rare Pokémon! ",
   },
   "Rubik's Cube": {
-    title: "Problem Solving",
-    description: "A symbol of my passion for puzzles and algorithmic thinking.",
-    details: ["Personal best solve time", "Learning algorithms", "Mental exercise and challenge"]
+    title: "Rubik's Cube",
+    description: "This Rubik's Cube shows how much I love puzzles and problem-solving. I enjoy breaking down patterns and finding the right moves to solve it fast. I can even solve it in under 20 seconds! It’s a fun challenge that keeps my mind sharp.",
   },
   "Raptors Jersey": {
     title: "Basketball Fan",

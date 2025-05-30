@@ -86,13 +86,7 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
           <div className="item-detail-content">
             <h2>{content.title}</h2>
             <p className="item-description">{content.description}</p>
-            <div className="item-details">
-              <ul>
-                {content.details.map((detail, index) => (
-                  <li key={index}>{detail}</li>
-                ))}
-              </ul>
-            </div>
+            
           </div>
         );
 
