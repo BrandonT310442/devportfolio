@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './FuturisticOverlay.css';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGithubAlt, faGoogle,faVuejs, faJs,faPhp,faPython, faJava, faAndroid, faReact, faNodeJs, faAws, faGit, faDocker } from '@fortawesome/free-brands-svg-icons';
-import { faPaperPlane,faGears, faCode, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import {faGithubAlt, faGithub,faGoogle,faVuejs, faJs,faPhp,faPython, faJava, faAndroid, faReact, faNodeJs, faAws, faGit, faDocker, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {faEnvelope, faPaperPlane,faGears, faCode, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 import {faSatelliteDish, faServer,faTable, faDatabase, faFeatherPointed} from '@fortawesome/free-solid-svg-icons';
 
@@ -249,6 +249,40 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
           </div>
         );
 
+      case 'contact':
+  return (
+    <div className="contact-content">
+      <h2>Contact Me</h2>
+      <div className="contact-buttons">
+        <a 
+          href="https://www.linkedin.com/in/brandon-t-041939226/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="contact-button linkedin-button"
+        >
+          <FontAwesomeIcon icon={faLinkedin} />
+          <span>LinkedIn</span>
+        </a>
+        <a 
+          href="https://github.com/BrandonT310442" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="contact-button github-button"
+        >
+          <FontAwesomeIcon icon={faGithub} />
+          <span>GitHub</span>
+        </a>
+        <a 
+          href="mailto:brandon.tai@mail.utoronto.ca" 
+          className="contact-button email-button"
+        >
+          <FontAwesomeIcon icon={faEnvelope} />
+          <span>Email</span>
+        </a>
+      </div>
+    </div>
+  );
+
       default:
         // Navigation instructions overlay
         if (type === 'navigation') {
@@ -272,6 +306,7 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
             </div>
           );
         }
+
         return null;
     }
   };

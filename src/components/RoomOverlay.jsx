@@ -9,7 +9,7 @@ const ITEMS = [
   { name: "Rubik's Cube", left: "74%", top: "67%", color: "#FF00FF" }, // muted red
   { name: "Raptors Jersey", left: "80%", top: "15%", color: "#FF0000" }, // muted dark red
   { name: "Baseball", left: "82%", top: "68%", color: "#c4c4c4" }, // muted white/light gray
-  { name: "Toronto Banner", left: "27%", top: "17%", color: "#FFFF00" } // muted blue
+  { name: "UofT Banner", left: "27%", top: "17%", color: "#FFFF00" } // muted blue
 ];
 
 // Item descriptions
@@ -27,19 +27,16 @@ const ITEM_DESCRIPTIONS = {
     description: "This Rubik's Cube shows how much I love puzzles and problem-solving. I enjoy breaking down patterns and finding the right moves to solve it fast. I can even solve it in under 20 seconds! It’s a fun challenge that keeps my mind sharp.",
   },
   "Raptors Jersey": {
-    title: "Basketball Fan",
-    description: "Proud supporter of the Toronto Raptors and basketball enthusiast.",
-    details: ["Season highlights", "Favorite players", "Championship memories"]
+    title: "Scottie Barnes Raptors Jersey",
+    description: "My Scottie Barnes Raptors jersey represents my love for basketball, a sport I played all through high school. The Raptors have always been a favorite team of mine, and one of my most memorable moments was watching them win the 2019 NBA Championship.",
   },
   "Baseball": {
-    title: "Sports Collection",
-    description: "Part of my sports memorabilia, representing my love for athletics.",
-    details: ["Blue Jays fan", "Summer game tradition", "Playing recreational baseball"]
+    title: "Baseball",
+    description: "Baseball is my second favorite sport and has been a big part of my life since grade 6. I’ve played it for years and still love going to Blue Jays games every season. I even have a collection of over 30 Blue Jays bobbleheads at home!",
   },
-  "Toronto Banner": {
-    title: "City Pride",
-    description: "Representing my connection to Toronto and its vibrant culture.",
-    details: ["City exploration", "Local events", "Community involvement"]
+  "UofT Banner": {
+    title: "UofT Banner",
+    description: " I’ve lived in Toronto my whole life, and being from this city has shaped who I am. Now, I’m proud to be studying Computer Science at the University of Toronto. This banner represents my connection to the city’s culture, my hometown pride, and the exciting path I’m on as a UofT student.",
   }
 };
 

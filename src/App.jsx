@@ -64,7 +64,7 @@ function App() {
   }, []);
 
   const commands = {
-    help: 'Available commands: help, clear, whoami, about, skills, experience, projects',
+    help: 'Available commands: help, clear, whoami, about, skills, experience, projects, contact',
     whoami: 'visitor@portfolio',
     clear: 'Terminal cleared',
     about: () => {
@@ -86,6 +86,11 @@ function App() {
       setOverlayType('projects')
       setOverlayVisible(true)
       return 'Loading projects...'
+    },
+    contact: () => {
+      setOverlayType('contact')
+      setOverlayVisible(true)
+      return 'Loading contact...'
     }
   }
   const createParticles = () => {

@@ -730,3 +730,90 @@ color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
   }
 }
+
+/* Contact Section Styles */
+.contact-content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.contact-content h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.contact-button:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 255, 225, 0.15);
+}
+
+.contact-button svg {
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover svg {
+  transform: scale(1.1);
+}
+
+.contact-button {
+  animation: buttonFadeIn 0.4s ease-out;
+}
+@keyframes buttonFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive adjustments for contact buttons */
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .contact-button {
+    width: 100%;
+    max-width: 250px;
+    padding: 1.2rem 2rem;
+  }
+}
