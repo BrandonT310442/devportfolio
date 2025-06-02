@@ -291,11 +291,8 @@ const FuturisticOverlay = ({ isVisible, onClose, type, content }) => {
               <h2>How to Navigate</h2>
               <div className="bio-text" style={{textAlign: 'left'}}>
                 <ul style={{lineHeight: '2'}}>
-                  <li><b>Recommendation </b> For the best experience view this website in full screen by clicking the button on the top right.</li>
-                  <li><b>If you are on a mobile device view this website in landscape mode. </b></li>
-
                   <li><b>1. Click Login</b> to access the interactive terminal and more features.</li>
-                  <li><b>2. Use the terminal</b> to type commands like <code>about</code>, <code>skills</code>, <code>experience</code>, <code>projects</code>.</li>
+                  <li><b>2. Click on the terminal</b>  to type commands like <code>about</code>, <code>skills</code>, <code>experience</code>, <code>projects</code>.</li>
                   <li><b>3. Explore the room:</b> Click on the glowing colored particles on various items in the room ie. the Raptors Jersey, Xbox etc. to discover more about me.</li>
           
                

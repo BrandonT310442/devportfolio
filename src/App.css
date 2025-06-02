@@ -46,6 +46,7 @@
   box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.7);
   filter: blur(0.5px);
   animation: particleFloat infinite alternate;
+  z-index: 1; /* Ensure particles stay behind the terminal */
   /* Animation duration is now controlled by inline style */
 }
 
@@ -248,7 +249,7 @@ body, html {
   transform: translate(-50%, -50%);
   width: 35%;
   height: 40%;
-  z-index: 2;
+  z-index: 5; /* Increased to ensure it stays above particles and other elements */
   transition: all 0.5s ease-in-out;
   animation: terminalAppear 0.5s ease-in-out;
   background-color: #282a36;
@@ -266,6 +267,8 @@ body, html {
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   font-size: 0.8rem; /* Reduced font size for fullscreen */
+   z-index: 5; /* Increased to ensure it stays above particles and other elements */
+
 }
 
 /* Dracula theme terminal styles */
@@ -276,6 +279,7 @@ body, html {
   padding: 20px !important;
   transform: scale(0.9); /* Slightly zoom out the terminal content */
   transform-origin: top left;
+   z-index: 5;
 }
 
 .toggle-fullscreen {

@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1;
 }
 
 @keyframes pulse {
@@ -40,10 +40,10 @@
   animation: pulse 2s infinite;
   /* Ensure perfect circle */
   aspect-ratio: 1 / 1;
-  box-sizing: border-box;
-  /* Prevent any deformation */
+  box-sizing: border-box;  /* Prevent any deformation */
   flex-shrink: 0;
   transform-origin: center center;
+  z-index: -1;
 }
 
 .room-glow-btn:focus, 

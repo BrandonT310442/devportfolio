@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.rotation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 60, 0.95));
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Higher than other overlays */
+  font-family: 'Montserrat', sans-serif;
+  animation: overlayFadeIn 0.5s ease-out;
+}
+
+.rotation-content {
+  text-align: center;
+  color: #ffffff;
+  max-width: 90%;
+  padding: 2rem;
+  background: rgba(30, 30, 30, 0.8);
+  border: 2px solid rgba(100, 200, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 
+    0 0 40px rgba(100, 200, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
+  animation: contentPulse 2s ease-in-out infinite alternate;
+}
+
+.rotation-icon-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.mobile-icon {
+  font-size: 3rem;
+  color: #64c8ff;
+  animation: iconGlow 2s ease-in-out infinite alternate;
+}
+
+.rotate-icon {
+  font-size: 1.2rem;
+  color: #ffffff;
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  animation: rotateAnimation 2s linear infinite;
+}
+
+.rotation-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.rotation-message {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.rotation-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.phone-outline {
+  width: 40px;
+  height: 60px;
+  border: 2px solid #64c8ff;
+  border-radius: 8px;
+  position: relative;
+  background: rgba(100, 200, 255, 0.1);
+  animation: phoneGlow 2s ease-in-out infinite alternate;
+}
+
+.phone-outline.rotated {
+  width: 60px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.phone-screen {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: linear-gradient(45deg, rgba(100, 200, 255, 0.3), rgba(150, 150, 255, 0.3));
+  border-radius: 4px;
+}
+
+.arrow-indicator {
+  font-size: 1.5rem;
+  color: #64c8ff;
+  font-weight: bold;
+  animation: arrowPulse 1.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contentPulse {
+  from {
+    box-shadow: 
+      0 0 40px rgba(100, 200, 255, 0.2),
+      inset 0 0 30px rgba(255, 255, 255, 0.05);
+  }
+  to {
+    box-shadow: 
+      0 0 60px rgba(100, 200, 255, 0.4),
+      inset 0 0 40px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes iconGlow {
+  from {
+    color: #64c8ff;
+    text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+  }
+  to {
+    color: #8dd4ff;
+    text-shadow: 0 0 30px rgba(100, 200, 255, 0.8);
+  }
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(100, 200, 255, 0.8);
+  }
+}
+
+@keyframes phoneGlow {
+  from {
+    border-color: #64c8ff;
+    box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+  }
+  to {
+    border-color: #8dd4ff;
+    box-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
+  }
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .rotation-content {
+    padding: 1.5rem;
+  }
+  
+  .rotation-title {
+    font-size: 1.5rem;
+  }
+  
+  .rotation-message {
+    font-size: 1rem;
+  }
+  
+  .mobile-icon {
+    font-size: 2.5rem;
+  }
+  
+  .phone-outline {
+    width: 30px;
+    height: 45px;
+  }
+  
+  .phone-outline.rotated {
+    width: 45px;
+    height: 30px;
+  }
+}
